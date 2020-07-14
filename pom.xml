@@ -20,10 +20,9 @@
  <modules>
         <module>ne-boot</module>
         <module>ne-boot-test</module>
-     <module>test</module>
-     <!-- <module>ne-boot-starters</module>
-      <module>ne-boot-examples</module>
-      <module>ne-boot-autoconfigure</module>-->
+<!--      <module>ne-boot-starters</module>-->
+<!--      <module>ne-boot-examples</module>-->
+      <module>ne-boot-autoconfigure</module>
     </modules>
     <distributionManagement>
         <repository>
