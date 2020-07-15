@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-<!--        <version>2.3.1.RELEASE</version>-->
+        <!--        <version>2.3.1.RELEASE</version>-->
         <version>1.5.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
@@ -14,15 +14,15 @@
     <packaging>pom</packaging>
     <version>2.0.0-SNAPSHOT</version>
     <name>ne-boot-root</name>
-    <description>New ne-boot project implement </description>
+    <description>New ne-boot project implement</description>
 
 
- <modules>
+    <modules>
         <module>ne-boot</module>
         <module>ne-boot-test</module>
-<!--      <module>ne-boot-starters</module>-->
-<!--      <module>ne-boot-examples</module>-->
-      <module>ne-boot-autoconfigure</module>
+        <module>ne-boot-starters</module>
+        <!--      <module>ne-boot-examples</module>-->
+        <module>ne-boot-autoconfigure</module>
     </modules>
     <distributionManagement>
         <repository>
@@ -91,17 +91,17 @@
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot</artifactId>
-                <version>1.4.3</version>
+                <version>2.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-autoconfigure</artifactId>
-                <version>1.4.3</version>
+                <version>2.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter</artifactId>
-                <version>1.4.3</version>
+                <version>2.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
@@ -152,24 +152,24 @@
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-cloud-starter-service</artifactId>
-                <version>1.4.3</version>
+                <version>2.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-cloud-starter-gateway</artifactId>
-                <version>1.4.3</version>
+                <version>2.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-cloud-starter-register</artifactId>
-                <version>1.4.3</version>
+                <version>2.0.0-SNAPSHOT</version>
             </dependency>
 
             <!-- Test -->
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-test</artifactId>
-                <version>1.4.3</version>
+                <version>2.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
@@ -410,28 +410,28 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-   <!-- <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+    <!-- <dependencies>
+         <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter</artifactId>
+         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-    </dependencies>-->
+         <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-test</artifactId>
+             <scope>test</scope>
+             <exclusions>
+                 <exclusion>
+                     <groupId>org.junit.vintage</groupId>
+                     <artifactId>junit-vintage-engine</artifactId>
+                 </exclusion>
+             </exclusions>
+         </dependency>
+     </dependencies>-->
 
     <build>
         <plugins>
-	  <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -484,10 +484,10 @@
                 </configuration>
             </plugin>
 
-           <!-- <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>-->
+            <!-- <plugin>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-maven-plugin</artifactId>
+             </plugin>-->
         </plugins>
     </build>
     <profiles>
