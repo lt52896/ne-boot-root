@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ne.boot</groupId>
+        <artifactId>ne-boot-starters</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
+
+  
+    <artifactId>ne-boot-starter-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>ne-cloud-starter-parent</module>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.41</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>1.4.194</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <!--<jdbcDriver>org.h2.Driver</jdbcDriver>-->
+                    <!--<jdbcURL>jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=true</jdbcURL>-->
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                    <!--<sqlScript>${project.basedir}/src/main/resources/schema.sql</sqlScript>-->
+                    <configurationFile>${project.basedir}/src/test/resources/generatorConfig.xml</configurationFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <!-- Service API doc generator -->
+        <profile>
+            <!--
+                对AsciicDoc生成API文档的插件配置信息
+                对于需要生成文档的Project的项目，需要定义相同的Profile，并在执行时使用 -Px,y,ne-api-doc（x,y是其他Profile）
+
+                使用注意：
+                1. 由于生成文档时，需要对多个不同的adoc文档进行索引，因此需要配置一个src/docs/asciidoc/index.adoc文件，文件配置内容如下:
+
+                ==================================================
+                :sourcedir: ../../../../../target
+
+                include:: {sourcedir}/docs/asciidoc/generated/overview.adoc[]
+                include:: {sourcedir}/docs/asciidoc/generated/paths.adoc[]
+                include:: {sourcedir}/docs/asciidoc/generated/definitions.adoc[]
+                ==================================================
+            -->
+            <id>ne-api-doc</id>
+            <build>
+                <plugins>
+                    <!-- asciidoctor -->
+                    <plugin>
+                        <!--
+                             该插件用于生成PDF和HTML格式的API文档
+                             使用说明：
+                             1. 需要增加单元测试代码，详情请参考：com.ne.base.service.boot.example.test.Swagger2MarkupTest
+                             2. 需要手动增加一个文档索引文件：boot/ne-boot-service-example/example-service/src/docs/asciidoc/index.adoc
+                             3. 执行mvn package后可以在boot/ne-boot-service-example/example-service/target/docs目录下查看生成的文档
+                         -->
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctor-maven-plugin</artifactId>
+                        <version>${asciidoctor.maven.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>output-html</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>process-asciidoc</goal>
+                                </goals>
+                                <configuration>
+                                    <backend>html5</backend>
+                                    <outputDirectory>${project.build.directory}/docs/html</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>output-pdf</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>process-asciidoc</goal>
+                                </goals>
+                                <configuration>
+                                    <backend>pdf</backend>
+                                    <outputDirectory>${project.build.directory}/docs/pdf</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.asciidoctor</groupId>
+                                <artifactId>asciidoctorj-pdf</artifactId>
+                                <version>${asciidoctorj.pdf.verion}</version>
+                            </dependency>
+                        </dependencies>
+                        <configuration>
+                            <sourceDirectory>src/docs/asciidoc</sourceDirectory>
+                            <sourceDocumentName>index.adoc</sourceDocumentName>
+                            <attributes>
+                                <doctype>book</doctype>
+                                <toc>left</toc>
+                                <toclevels>2</toclevels>
+                                <generated>${project.build.directory}/docs/asciidoc/generated</generated>
+                            </attributes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>${maven.antrun.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <configuration>
+                                    <target name="zip">
+                                        <zip destfile="${project.build.directory}/${project.name}-${project.version}-api-doc.zip" basedir="${project.build.directory}/docs" excludes="" />
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>${build.helper.maven.plugin}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-artifacts</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>attach-artifact</goal>
+                                </goals>
+                                <configuration>
+                                    <artifacts>
+                                        <artifact>
+                                            <file>target/${project.name}-${project.version}-api-doc.zip</file>
+                                            <type>zip</type>
+                                            <classifier>optional</classifier>
+                                        </artifact>
+                                    </artifacts>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- Spring boot single jar -->
+        <profile>
+            <!--
+                通常情况下，我们不希望开发的服务模块将所有依赖都打在一个Jar文件中，只会在服务模块部署时才会这样做
+                因此在模块集成项目中可以执行本Profile，以方便对模块进行单一Jar的生成。
+             -->
+            <id>ne-single-jar</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- docker image builder -->
+        <profile>
+            <!-- 生成 Spring Boot的 Docker运行image，在运行本profile前，需要增加src/main/docker/Dockerfile配置信息，参考配置内容如下：
+
+                ===============================================
+                FROM frolvlad/alpine-oraclejdk8:slim
+                VOLUME /tmp
+                ADD example-service-1.0.1-SNAPSHOT.jar app.jar
+                RUN sh -c 'touch /app.jar'
+                ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+                ===============================================
+
+                注意以上信息需要修改内容：
+                - FROM frolvlad/alpine-oraclejdk8:slim，可以根据实际情况选用其他的基础镜像
+                - example-service-1.0.1-SNAPSHOT.jar app.jar jar的名称需要根据项目名称进行修改
+
+                详细参考信息，请参考前述的plugin定义处的描述
+
+
+                1. 构建镜像： mvn package -DbuildImage
+                2. 发布镜像到仓库： mvn package -DbuildImage -DpushImage
+             -->
+            <id>ne-docker-image</id>
+            <activation>
+                <property>
+                    <name>buildImage</name>
+                </property>
+                <file>
+                    <exists>src/main/docker/Dockerfile</exists>
+                </file>
+            </activation>
+            <properties>
+                <docker.serverId>nx-docker</docker.serverId>
+                <docker.registryUrl>http://registry.nx-code.com</docker.registryUrl>
+                <docker.imageName>registry.nx-code.com/${project.artifactId}</docker.imageName>
+                <docker.imageTagName>${project.version}</docker.imageTagName>
+            </properties>
+            <build>
+                <plugins>
+                    <!-- 在打包Docker镜像前，需要将应用打包为独立的Jar -->
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <finalName>${project.artifactId}-app</finalName>
+                            <outputDirectory>${project.build.directory}/docker/</outputDirectory>
+                        </configuration>
+                    </plugin>
+                    <!-- docker -->
+                    <plugin>
+                        <!--
+                            本Maven插件生成Docker Image
+                            参考信息：https://spring.io/guides/gs/spring-boot-docker/
+
+                            前提：
+                            1. 运行本Profile需要构建服务器中安装有Docker，详情见参考信息
+                            2.
+                            使用方法：
+                            1. 执行打包： mvn clean package -Pne-docker-image
+                            2. 完成后执行：docker run -e "SPRING_PROFILES_ACTIVE=dev" -p 6001:6001 -t ne/example-service:latest
+                            3. 访问服务：http://localhost:6001/swagger-ui.html
+
+                            注意：如果需要push指定Tag的image，可以使用指令：mvn clean package -Pne-docker-image -DpushImageTags -DdockerImageTags=latest -DdockerImageTags=another-tag
+
+                            使用说明：
+                            1. "SPRING_PROFILES_ACTIVE=dev" 说明激活名为dev的profile，意思在src/resources/application-dev.yml有这个文件，并进行配置，详细请参考Example工程
+
+                         -->
+                        <groupId>com.spotify</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>${docker.maven.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>generate-docker-image</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <serverId>${docker.serverId}</serverId>
+                            <registryUrl>${docker.registryUrl}</registryUrl>
+                            <imageName>${docker.imageName}</imageName>
+                            <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                            <!-- optionally overwrite tags every time image is built with docker:build -->
+                            <forceTags>true</forceTags>
+                            <imageTags>
+                                <imageTag>${docker.imageTagName}</imageTag>
+                            </imageTags>
+                            <resources>
+                                <resource>
+                                    <targetPath>/</targetPath>
+                                    <directory>${project.build.directory}/docker/</directory>
+                                    <include>${project.artifactId}-app.jar</include>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
