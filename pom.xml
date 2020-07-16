@@ -34,7 +34,10 @@
             <url>https://packages.aliyun.com/maven/repository/2012621-snapshot-wphiYf/</url>
         </snapshotRepository>
     </distributionManagement>
-
+    <scm>
+        <connection>scm:git:https://github.com/lt52896/ne-boot.git</connection>
+        <developerConnection>scm:git:https://github.com/lt52896/ne-boot.git</developerConnection>
+    </scm>
     <properties>
         <spring.cloud.version>Camden.SR6</spring.cloud.version>
         <spring.cloud.stream.version>1.0.3.RELEASE</spring.cloud.stream.version>
@@ -488,6 +491,27 @@
                  <groupId>org.springframework.boot</groupId>
                  <artifactId>spring-boot-maven-plugin</artifactId>
              </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.0-beta-7</version>
+                <configuration>
+                    <providerImplementations>
+                        <git>jgit</git>
+                    </providerImplementations>
+                    <username>lt52896</username>
+                    <password>lt6841723</password>
+                    <tagBase>${project.artifactId}-${project.version}</tagBase>
+                    <goals>-f pom.xml deploy</goals>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-jgit</artifactId>
+                        <version>1.9.5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
     <profiles>
