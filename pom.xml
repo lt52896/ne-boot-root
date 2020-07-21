@@ -483,6 +483,8 @@
                     <noDeploy>true</noDeploy>
                     <pushReleases>true</pushReleases>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <username>lt52896</username>
+                    <password>lt6841723</password>
                 </configuration>
             </plugin>
 
@@ -490,7 +492,7 @@
                  <groupId>org.springframework.boot</groupId>
                  <artifactId>spring-boot-maven-plugin</artifactId>
              </plugin>-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.0-beta-7</version>
@@ -510,7 +512,7 @@
                         <version>1.9.5</version>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
     <profiles>
