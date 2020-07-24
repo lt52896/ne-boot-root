@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.ne.boot</groupId>
         <artifactId>ne-boot-root</artifactId>
-        <version>2.0.2-SNAPSHOT</version>
+        <version>2.0.1-SNAPSHOT</version>
     </parent>
 
 
@@ -13,23 +13,23 @@
 
     <modules>
         <module>ne-boot-starter</module>
-        <module>ne-boot-starter-hbase</module>
+       <!-- <module>ne-boot-starter-hbase</module>
         <module>ne-boot-starter-kafka</module>
         <module>ne-boot-starter-mongodb</module>
         <module>ne-boot-starter-mybatis</module>
         <module>ne-boot-starter-redis</module>
-        <module>ne-boot-starter-service</module>
+        <module>ne-boot-starter-service</module>-->
         <module>ne-cloud-starter-gateway</module>
         <module>ne-cloud-starter-register</module>
         <module>ne-cloud-starter-service</module>
         <module>ne-boot-starter-parent</module>
-<!--        <module>ne-cloud-starter-parent</module>-->
-<!--        <module>ne-boot-starter-test-h2</module>-->
+       <!-- <module>ne-cloud-starter-parent</module>
+        <module>ne-boot-starter-test-h2</module>
         <module>ne-boot-starter-test</module>
-<!--        <module>ne-boot-starter-test-mongodb</module>-->
-<!--        <module>ne-boot-starter-poi</module>-->
+        <module>ne-boot-starter-test-mongodb</module>
+        <module>ne-boot-starter-poi</module>
         <module>ne-boot-starter-jdbc</module>
-<!--        <module>ne-boot-starter-mybatis-cache</module>-->
-        <module>ne-boot-starter-protostuff</module>
+        <module>ne-boot-starter-mybatis-cache</module>
+        <module>ne-boot-starter-protostuff</module>-->
     </modules>
 </project>

@@ -11,7 +11,7 @@
     <groupId>com.ne.boot</groupId>
     <artifactId>ne-boot-root</artifactId>
     <packaging>pom</packaging>
-    <version>2.0.2-SNAPSHOT</version>
+    <version>2.0.1-SNAPSHOT</version>
     <name>ne-boot-root</name>
     <description>New ne-boot project implement</description>
 
@@ -93,32 +93,32 @@
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>2.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-autoconfigure</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>2.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>2.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-service</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-jdbc</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-mybatis</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
@@ -128,65 +128,65 @@
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-hbase</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-kafka</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-mongodb</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-redis</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-poi</artifactId>
-                <version>2.0.1-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <!--ne cloud-->
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-cloud-starter-service</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-cloud-starter-gateway</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>2.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-cloud-starter-register</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>2.0.1-SNAPSHOT</version>
             </dependency>
 
             <!-- Test -->
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-test</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>2.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-test</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-test-mongodb</artifactId>
-                <version>2.0.1-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-test-h2</artifactId>
-                <version>2.0.1-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <!--mongodb-->
             <dependency>
@@ -227,7 +227,7 @@
             <dependency>
                 <groupId>com.ne.boot</groupId>
                 <artifactId>ne-boot-starter-protostuff</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <version>1.4.3</version>
             </dependency>
             <!-- Import Spring Cloud -->
 
