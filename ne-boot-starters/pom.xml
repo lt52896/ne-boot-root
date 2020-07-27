@@ -13,7 +13,7 @@
 
     <modules>
         <module>ne-boot-starter</module>
-<!--        jgitflow test-->
+<!--        jgitflow test add feature1-->
        <!-- <module>ne-boot-starter-hbase</module>
         <module>ne-boot-starter-kafka</module>
         <module>ne-boot-starter-mongodb</module>
