@@ -69,7 +69,7 @@
         <asciidoctor.maven.plugin.version>1.5.3</asciidoctor.maven.plugin.version>
         <asciidoctorj.pdf.verion>1.5.0-alpha.11</asciidoctorj.pdf.verion>
         <!--POI-->
-        <poi.version>3.15</poi.version>
+        <poi.version>4.1.2</poi.version>
         <mvel.version>2.3.1.Final</mvel.version>
         <!--hbase-->
         <guava.version>12.0.1</guava.version>
