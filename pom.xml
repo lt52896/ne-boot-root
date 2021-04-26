@@ -49,7 +49,7 @@
 
         <!-- 嵌入式的关系数据库，用于单元测试 -->
         <h2.version>1.4.192</h2.version>
-        <commons.io.version>2.3</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
         <commons.langs.version>3.4</commons.langs.version>
         <commons.collections.version>4.1</commons.collections.version>
 
